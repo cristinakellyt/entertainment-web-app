@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: pxToRem(16);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: pxToRem(18);
+  background-color: $element-color-background1;
+  color: $element-color-secondary;
+}
+
+p {
+  line-height: 1.8;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  position: relative;
+}
+
+@media only screen and (max-width: 34.375em) {
+  body {
+    font-size: pxToRem(12);
+  }
+}
