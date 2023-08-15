@@ -10,7 +10,6 @@
 .base-width {
   max-width: $max-width;
   margin: 0 auto;
-  padding-top: pxToRem(40);
-  background-color: bisque;
+  padding: pxToRem(32);
 }
 </style>
