@@ -11,14 +11,10 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: pxToRem(18);
-  background-color: $element-color-background1;
-  color: $element-color-secondary;
-}
-
-p {
-  line-height: 1.8;
+  background-color: $dark-blue;
+  color: $pure-white;
 }
 
 ul {
@@ -32,14 +28,4 @@ img {
 
 a {
   text-decoration: none;
-}
-
-#app {
-  position: relative;
-}
-
-@media only screen and (max-width: 34.375em) {
-  body {
-    font-size: pxToRem(12);
-  }
 }
