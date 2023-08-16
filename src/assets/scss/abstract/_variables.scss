@@ -1,5 +1,5 @@
 // COLORS
-$semi-dark-blue: #161d2f;
+$semi-dark-blue: rgb(22, 29, 47);
 $greyish-blue: rgb(90, 105, 143);
 $dark-blue: rgb(16, 20, 30);
 $red: rgb(252, 71, 71);
@@ -8,3 +8,10 @@ $pure-white: rgb(255, 255, 255);
 // UTILITIES
 
 $max-width: pxToRem(1440);
+
+// PLACEHOLDERS SELECTOR
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
