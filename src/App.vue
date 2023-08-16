@@ -2,7 +2,7 @@
   <BaseWidth>
     <div class="layout">
       <NavSideBar />
-      <div>
+      <div class="main-content">
         <p>Search</p>
         <router-view></router-view>
       </div>
@@ -21,5 +21,19 @@ import NavSideBar from '@/components/layout/NavSideBar.vue'
 .layout {
   display: grid;
   grid-template-columns: auto 1fr;
+  gap: pxToRem(32);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: pxToRem(35);
+  margin: pxToRem(32) 0;
+}
+
+@media only screen and (max-width: 48em) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

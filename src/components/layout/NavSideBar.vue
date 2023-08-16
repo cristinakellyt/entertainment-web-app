@@ -48,9 +48,8 @@
           </router-link>
         </li>
       </ul>
+      <img src="@/assets/image-avatar.png" alt="user image" class="user-image" />
     </nav>
-
-    <img src="@/assets/image-avatar.png" alt="user image" class="user-image" />
   </div>
 </template>
 
@@ -58,7 +57,6 @@
 @import '@/assets/scss/main.scss';
 
 .side-bar {
-  @include flex-direction-justify-align(column, space-between, center);
   background-color: $semi-dark-blue;
   border-radius: pxToRem(20);
   width: pxToRem(96);
@@ -67,18 +65,17 @@
 
   &__nav {
     @include flex-direction-justify-align(column, space-between, center);
-    height: 30%;
+    height: 100%;
+    transition: all 1s;
 
     &--list {
       @extend %flex-column;
       gap: pxToRem(25);
-    }
-
-    &--item {
-      transition: all 0.3s;
+      margin-top: pxToRem(-500);
     }
 
     &--item:hover .icon-nav {
+      transition: all 0.3s;
       fill: $red;
     }
 
@@ -93,5 +90,46 @@
   height: pxToRem(40);
   border-radius: pxToRem(40);
   border: 1px solid $pure-white;
+}
+
+@media only screen and (max-width: 48em) {
+  .side-bar {
+    width: 100%;
+    height: pxToRem(72);
+    padding: 0 pxToRem(32);
+
+    &__nav {
+      flex-direction: row;
+      width: 100%;
+
+      &--list {
+        flex-direction: row;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 23.438em) {
+  .side-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: pxToRem(56);
+    margin-left: pxToRem(-32);
+    padding: 0 pxToRem(16);
+    border-radius: 0;
+    z-index: 100;
+  }
+
+  .icon-nav-home {
+    width: pxToRem(25);
+    height: pxToRem(20);
+  }
+
+  .user-image {
+    width: pxToRem(24);
+    height: pxToRem(24);
+  }
 }
 </style>
