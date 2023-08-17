@@ -114,7 +114,7 @@
   .side-bar {
     position: fixed;
     top: 0;
-    width: 100%;
+    right: 0;
     height: pxToRem(56);
     margin-left: pxToRem(-32);
     padding: 0 pxToRem(16);
