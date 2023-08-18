@@ -12,4 +12,10 @@
   margin: 0 auto;
   padding: pxToRem(32);
 }
+
+@media only screen and (max-width: 23.438em) {
+  .base-width {
+    padding: pxToRem(32) pxToRem(16);
+  }
+}
 </style>
