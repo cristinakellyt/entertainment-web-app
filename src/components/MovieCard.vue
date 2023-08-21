@@ -19,7 +19,7 @@
       </svg>
     </button>
 
-    <div class="movie-description" :class="isTrending ? 'trending-style' : 'normal-style'">
+    <div class="movie-description" :class="isCarrousel ? 'carrousel-style' : 'normal-style'">
       <div class="movie-details">
         <p>{{ year }}</p>
 
@@ -46,7 +46,8 @@ const props = defineProps({
   rating: { type: String },
   thumbnail: { type: Object },
   title: { type: String },
-  year: { type: Number }
+  year: { type: Number },
+  isCarrousel: { type: Boolean }
 })
 
 const screenSizeStore = useScreenSizeStore()
@@ -56,14 +57,20 @@ const imageSource = ref(null)
 watch(
   () => screenSizeStore.isMobile,
   () => {
-    if (props.isTrending && !screenSizeStore.isMobile) {
+    if (props.isTrending && !screenSizeStore.isMobile && props.isCarrousel) {
       imageSource.value = props.thumbnail.trending.large
-    } else if (props.isTrending && screenSizeStore.isMobile) {
+    } else if (props.isTrending && screenSizeStore.isMobile && props.isCarrousel) {
       imageSource.value = props.thumbnail.trending.small
-    } else if (!props.isTrending && screenSizeStore.isMobile) {
-      imageSource.value = props.thumbnail.regular.small
-    } else if (!props.isTrending && !screenSizeStore.isMobile) {
+    } else if (
+      (!props.isTrending && !screenSizeStore.isMobile) ||
+      (props.isTrending && !screenSizeStore.isMobile)
+    ) {
       imageSource.value = props.thumbnail.regular.large
+    } else if (
+      (!props.isTrending && screenSizeStore.isMobile) ||
+      (props.isTrending && screenSizeStore.isMobile)
+    ) {
+      imageSource.value = props.thumbnail.regular.small
     }
   },
   { immediate: true }
@@ -109,7 +116,7 @@ const toggleBookmarked = () => {
   gap: pxToRem(10);
 }
 
-.trending-style {
+.carrousel-style {
   position: absolute;
   bottom: 10%;
   left: 5%;
