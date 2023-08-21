@@ -27,10 +27,8 @@ defineProps({
 }
 
 input {
+  @extend %heading-medium;
   width: 100%;
-  font-family: 'Outfit', sans-serif;
-  color: $pure-white;
-  font-weight: 300;
   background-color: transparent;
   caret-color: $red;
   border: none;

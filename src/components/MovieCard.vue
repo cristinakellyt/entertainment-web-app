@@ -1,7 +1,7 @@
 <template>
   <div class="movie-card">
     <img :src="imageSource" class="movie-image" />
-    <span class="bookmark">
+    <button class="bookmark" @click="toggleBookmarked">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -17,9 +17,9 @@
           stroke-width="1.5"
         />
       </svg>
-    </span>
+    </button>
 
-    <div class="movie-description" :class="{ overflow: isTrending }">
+    <div class="movie-description" :class="isTrending ? 'trending-style' : 'normal-style'">
       <div class="movie-details">
         <p>{{ year }}</p>
 
@@ -68,6 +68,10 @@ watch(
   },
   { immediate: true }
 )
+
+const toggleBookmarked = () => {
+  console.log('implement change of bookmarked movie using Pinia')
+}
 </script>
 
 <style scoped lang="scss">
@@ -76,11 +80,18 @@ watch(
 .movie-card {
   position: relative;
 }
+.movie-image {
+  border-radius: pxToRem(8);
+}
+
 .bookmark {
   position: absolute;
   top: pxToRem(16);
   right: pxToRem(16);
   border-radius: 50px;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .bookmarked {
@@ -90,31 +101,6 @@ watch(
 .movie-description {
   display: flex;
   flex-direction: column;
-  color: $pure-white;
-
-  & p {
-    /* Body (M) */
-    font-family: 'Outfit', sans-serif;
-    font-size: pxToRem(15);
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
-
-  & h3 {
-    // Heading S
-    font-family: 'Outfit', sans-serif;
-    font-size: pxToRem(24);
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-}
-
-.overflow {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
 }
 
 .movie-details {
@@ -123,10 +109,26 @@ watch(
   gap: pxToRem(10);
 }
 
-.movie-image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: pxToRem(8);
+.trending-style {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  & p {
+    @extend %body-medium;
+  }
+
+  & h3 {
+    @extend %heading-small;
+  }
+}
+
+.normal-style {
+  & p {
+    @extend %body-small;
+  }
+
+  & h3 {
+    @extend %heading-extra-small;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <h2>Trending</h2>
+  <h2 class="heading-secondary">Trending</h2>
 
   <div class="carrousel">
     <MovieCard
@@ -15,7 +15,8 @@
       class="carrousel-card"
     />
   </div>
-  <h2>Recommended</h2>
+
+  <h2 class="heading-secondary">Recommended</h2>
   <div class="grid-layout">
     <MovieCard
       v-for="movie in isNotTrending"
@@ -37,6 +38,7 @@ import MovieCard from '@/components/MovieCard.vue'
 import data from '@/data.json'
 import { ref, onMounted } from 'vue'
 console.log(data)
+
 const trending = ref()
 const isNotTrending = ref()
 
@@ -60,11 +62,9 @@ const isTrending = () => {
   }
 }
 
-// .movie-card {
-//   border-radius: pxToRem(8);
-//   overflow: hidden;
-//   // position: relative;
-// }
+.heading-secondary {
+  @extend %heading-large;
+}
 
 .grid-layout {
   display: grid;
