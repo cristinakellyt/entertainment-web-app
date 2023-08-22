@@ -1,14 +1,36 @@
 <template>
   <div :class="`search-bar ${size}`">
     <img :class="`search-icon ${size}`" src="@/assets/icon-search.svg" />
-    <input :class="`${size}`" type="text" placeholder="Search for movies or TV series" />
+    <input
+      :class="`${size}`"
+      type="text"
+      :placeholder="`Search for ${placeholderSearchFor}`"
+      v-model.trim="searchKey"
+      @input="onInputHandler"
+      @keyup.enter="onEnterHandler"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 defineProps({
-  size: String
+  size: String,
+  placeholderSearchFor: String
 })
+const emit = defineEmits(['onSearch'])
+
+const searchKey = ref('')
+
+const onInputHandler = () => {
+  if (searchKey.value === '') emit('onSearch', searchKey.value)
+}
+
+const onEnterHandler = () => {
+  emit('onSearch', searchKey.value)
+  console.log(searchKey.value)
+}
 </script>
 
 <style scoped lang="scss">

@@ -1,5 +1,8 @@
 <template>
-  <h2 class="heading-secondary"><slot>Name</slot></h2>
+  <h2 v-if="isSearching" class="heading-secondary">
+    Found {{ numberOfSearchResult }} results for '{{ searchFor }}'
+  </h2>
+  <h2 v-else class="heading-secondary"><slot>Name</slot></h2>
 
   <div :class="isCarrousel ? 'carrousel' : 'grid-layout'">
     <MovieCard
@@ -23,30 +26,31 @@ import MovieCard from '@/components/MovieCard.vue'
 import { ref, onMounted } from 'vue'
 import { useAvailableFilmsStore } from '@/stores/availableFilmsStore'
 
-const props = defineProps({ filterBy: { type: String }, isCarrousel: { type: Boolean } })
+const props = defineProps({
+  filterBy: { type: String },
+  isCarrousel: { type: Boolean },
+  searchFor: { type: String }
+})
 
 const availableFilmsStore = useAvailableFilmsStore()
 const filteredFilms = ref()
+const isSearching = ref(false)
+const numberOfSearchResult = ref()
 
 onMounted(() => {
-  availableFilmsStore.getAvailableFilms
   filterAvailableFilms(props.filterBy)
 })
 
 const filterAvailableFilms = (filterKey) => {
-  if (filterKey === 'movies') {
-    filteredFilms.value = availableFilmsStore.filterMovies()
-  } else if (filterKey === 'trending') {
-    filteredFilms.value = availableFilmsStore.trendingFilms()
-  } else if (filterKey === 'not-trending') {
-    filteredFilms.value = availableFilmsStore.notTrendingFilms()
-  } else if (filterKey === 'tv-series') {
-    filteredFilms.value = availableFilmsStore.filterTvSeries()
-  } else if (filterKey === 'bookmarked') {
-    filteredFilms.value = availableFilmsStore.bookmarked()
-  }
+  filteredFilms.value = availableFilmsStore.getListOf(filterKey)
 
-  return filteredFilms.value
+  if (props.searchFor) {
+    isSearching.value = true
+    filteredFilms.value = filteredFilms.value.filter((films) =>
+      films.title.toLowerCase().includes(props.searchFor.toLowerCase())
+    )
+    numberOfSearchResult.value = filteredFilms.value.length
+  }
 }
 </script>
 
@@ -55,6 +59,7 @@ const filterAvailableFilms = (filterKey) => {
 .carrousel {
   display: flex;
   gap: pxToRem(40);
+  white-space: nowrap;
 
   &-card {
     width: pxToRem(470);

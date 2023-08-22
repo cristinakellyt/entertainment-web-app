@@ -3,7 +3,6 @@
     <div class="layout">
       <NavSideBar />
       <div class="main-content">
-        <SearchBar :size="screenSizeStore.isMobile ? 'small' : 'large'" />
         <router-view></router-view>
       </div>
     </div>
@@ -13,7 +12,6 @@
 <script setup>
 import BaseWidth from '@/components/ui/BaseWidth.vue'
 import NavSideBar from '@/components/layout/NavSideBar.vue'
-import SearchBar from '@/components/ui/SearchBar.vue'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
 
 const screenSizeStore = useScreenSizeStore()
@@ -27,6 +25,7 @@ screenSizeStore.initResponsive()
   display: grid;
   grid-template-columns: auto 1fr;
   gap: pxToRem(32);
+  overflow: hidden;
 }
 
 .main-content {
