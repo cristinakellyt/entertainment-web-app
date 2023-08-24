@@ -7,8 +7,7 @@
         width="32"
         height="32"
         viewBox="0 0 32 32"
-        fill="none"
-        :class="{ bookmarked: isBookmarked }"
+        :fill="isBookmarked ? '#fff' : 'none'"
       >
         <circle opacity="0.500647" cx="16" cy="16" r="16" fill="#10141E" />
         <path
@@ -50,6 +49,7 @@ const props = defineProps({
   isCarrousel: { type: Boolean }
 })
 
+const emit = defineEmits(['toggleBookmark'])
 const screenSizeStore = useScreenSizeStore()
 
 const imageSource = ref(null)
@@ -77,7 +77,7 @@ watch(
 )
 
 const toggleBookmarked = () => {
-  console.log('implement change of bookmarked movie using Pinia')
+  emit('toggleBookmark', props.title)
 }
 </script>
 
@@ -99,10 +99,6 @@ const toggleBookmarked = () => {
   cursor: pointer;
   background: none;
   border: none;
-}
-
-.bookmarked {
-  fill: $pure-white;
 }
 
 .movie-description {

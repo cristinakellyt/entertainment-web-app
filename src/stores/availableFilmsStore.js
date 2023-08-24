@@ -11,7 +11,6 @@ export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
       return this.availableFilms
     }
   },
-
   actions: {
     getListOf(filterKey) {
       if (filterKey === 'all') {
@@ -36,6 +35,12 @@ export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
         )
       }
       return this.filteredFilms
+    },
+
+    toggleBookmarked(title) {
+      const selectedMovie = this.availableFilms.find((films) => films.title === title)
+      selectedMovie.isBookmarked = !selectedMovie.isBookmarked
+      return selectedMovie
     }
   }
 })

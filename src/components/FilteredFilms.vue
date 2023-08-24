@@ -6,6 +6,7 @@
 
   <div :class="isCarrousel ? 'carrousel' : 'grid-layout'">
     <MovieCard
+      @toggleBookmark="changeBookmark"
       v-for="movie in filteredFilms"
       :key="movie.title"
       :category="movie.category"
@@ -51,6 +52,11 @@ const filterAvailableFilms = (filterKey) => {
     )
     numberOfSearchResult.value = filteredFilms.value.length
   }
+}
+
+const changeBookmark = (film) => {
+  availableFilmsStore.toggleBookmarked(film)
+  filteredFilms.value = availableFilmsStore.getListOf(props.filterBy)
 }
 </script>
 
