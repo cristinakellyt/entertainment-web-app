@@ -1,6 +1,12 @@
 <template>
   <div class="movie-card">
-    <img :src="imageSource" class="movie-image" />
+    <div class="hovering">
+      <img :src="imageSource" class="movie-image" />
+      <div class="movie-play">
+        <img src="@/assets/icon-play.svg" />
+        <span>Play</span>
+      </div>
+    </div>
     <button class="bookmark" @click="toggleBookmarked">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +94,40 @@ const toggleBookmarked = () => {
   position: relative;
 }
 .movie-image {
+  position: relative;
+}
+
+.movie-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: pxToRem(10);
+  pointer-events: none;
+  border-radius: pxToRem(28);
+  padding: pxToRem(5) pxToRem(15);
+}
+
+.hovering {
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
   border-radius: pxToRem(8);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover .movie-image {
+    z-index: -40;
+  }
+
+  &:hover .movie-play {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.25);
+    pointer-events: all;
+  }
 }
 
 .bookmark {
