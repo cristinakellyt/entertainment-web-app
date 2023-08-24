@@ -29,7 +29,6 @@ const onInputHandler = () => {
 
 const onEnterHandler = () => {
   emit('onSearch', searchKey.value)
-  console.log(searchKey.value)
 }
 </script>
 

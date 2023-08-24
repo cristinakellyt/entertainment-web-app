@@ -1,38 +1,24 @@
 <template>
-  <SearchBar
-    :size="screenSizeStore.isMobile ? 'small' : 'large'"
-    placeholderSearchFor="movies and TV Series"
-    @onSearch="onSearch"
-  />
-
-  <FilteredFilms
-    v-if="filmSearched"
-    :searchFor="filmSearched"
-    filterBy="all"
-    :key="filmSearched"
-  ></FilteredFilms>
-
-  <div v-else class="main-content">
-    <FilteredFilms filterBy="trending" :isCarrousel="true"> Trending </FilteredFilms>
-    <FilteredFilms filterBy="not-trending"> Recommended </FilteredFilms>
-  </div>
+  <PageView :data="data" :key="forceRender"> </PageView>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import SearchBar from '@/components/ui/SearchBar.vue'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import PageView from '@/views/PageView.vue'
 
-import FilteredFilms from '@/components/FilteredFilms.vue'
-import { useScreenSizeStore } from '@/stores/screenSizeStore'
+const route = useRoute()
+const data = ref(route.params.data ? JSON.parse(route.params.data) : '')
 
-const screenSizeStore = useScreenSizeStore()
+const forceRender = ref(0)
 
-const filmSearched = ref()
-
-const onSearch = (searchKey) => {
-  filmSearched.value = searchKey
-  return filmSearched
-}
+onBeforeRouteUpdate((to, from, next) => {
+  if (to.params.data !== from.params.data) {
+    forceRender.value += 1
+    data.value = JSON.parse(to.params.data)
+  }
+  next()
+})
 </script>
 
 <style scoped lang="scss">
