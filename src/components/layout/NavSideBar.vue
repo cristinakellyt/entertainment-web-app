@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar">
     <nav class="side-bar__nav">
-      <img src="@/assets/logo.svg" alt="logo" class="icon-nav-home" />
+      <img src="/logo.svg" alt="logo" class="icon-nav-home" />
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
           <router-link :to="{ name: 'overview', params: { data: JSON.stringify(navPages.home) } }">
@@ -52,7 +52,7 @@
           </router-link>
         </li>
       </ul>
-      <img src="@/assets/image-avatar.png" alt="user image" class="user-image" />
+      <img src="/image-avatar.png" alt="user image" class="user-image" />
     </nav>
   </div>
 </template>

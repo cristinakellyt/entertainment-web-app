@@ -1,6 +1,6 @@
 <template>
   <div :class="`search-bar ${size}`">
-    <img :class="`search-icon ${size}`" src="@/assets/icon-search.svg" />
+    <img :class="`search-icon ${size}`" src="/icon-search.svg" />
     <input
       :class="`${size}`"
       type="text"

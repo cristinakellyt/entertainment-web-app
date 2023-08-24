@@ -3,7 +3,7 @@
     <div class="hovering">
       <img :src="imageSource" class="movie-image" />
       <div class="movie-play">
-        <img src="@/assets/icon-play.svg" />
+        <img src="/icon-play.svg" />
         <span>Play</span>
       </div>
     </div>
@@ -29,8 +29,8 @@
         <p>{{ year }}</p>
 
         <span> &middot; </span>
-        <img v-if="category === 'Movie'" src="@/assets/icon-category-movie.svg" />
-        <img v-else src="@/assets/icon-category-tv.svg" />
+        <img v-if="category === 'Movie'" src="/icon-category-movie.svg" />
+        <img v-else src="/icon-category-tv.svg" />
         <p>{{ category }}</p>
         <span> &middot; </span>
         <p>{{ rating }}</p>
