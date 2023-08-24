@@ -35,8 +35,7 @@ const screenSizeStore = useScreenSizeStore()
 const filmSearched = ref()
 
 const onSearch = (searchKey) => {
-  filmSearched.value = searchKey
-  return filmSearched
+  return (filmSearched.value = searchKey)
 }
 
 defineProps({ data: { type: Object } })

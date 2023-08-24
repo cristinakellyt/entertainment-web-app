@@ -4,7 +4,7 @@
       <img src="@/assets/logo.svg" alt="logo" class="icon-nav-home" />
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
-          <router-link :to="{ name: 'user', params: { data: JSON.stringify(navPages.home) } }">
+          <router-link :to="{ name: 'overview', params: { data: JSON.stringify(navPages.home) } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"

@@ -1,17 +1,35 @@
 <template>
-  <PageView :data="data" :key="forceRender"> </PageView>
+  <UserPageView :data="data" :key="forceRender" />
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router'
-import PageView from '@/views/PageView.vue'
+import UserPageView from '@/views/UserPageView.vue'
+
+const overview = {
+  search: {
+    placeholder: 'movies and TV Series',
+    filterBy: 'all'
+  },
+  mainContent: [
+    {
+      filterBy: 'trending',
+      title: 'Trending',
+      isCarrousel: true
+    },
+    {
+      filterBy: 'not-trending',
+      title: 'Recommended',
+      isCarrousel: false
+    }
+  ]
+}
 
 const route = useRoute()
-const data = ref(route.params.data ? JSON.parse(route.params.data) : '')
+const data = ref(route.params.data ? JSON.parse(route.params.data) : overview)
 
 const forceRender = ref(0)
-
 onBeforeRouteUpdate((to, from, next) => {
   if (to.params.data !== from.params.data) {
     forceRender.value += 1
