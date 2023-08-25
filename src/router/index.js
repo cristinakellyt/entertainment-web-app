@@ -10,8 +10,11 @@ const router = createRouter({
     {
       path: '/user',
       name: 'home',
-      component: () => import('@/views/UserView.vue'),
       children: [
+        {
+          path: '',
+          component: () => import('@/views/HomeView.vue')
+        },
         {
           path: 'overview/:data',
           name: 'overview',

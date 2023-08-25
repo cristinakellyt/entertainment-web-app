@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
-defineProps({
+const props = defineProps({
   size: String,
   placeholderSearchFor: String
 })
@@ -30,6 +30,14 @@ const onInputHandler = () => {
 const onEnterHandler = () => {
   emit('onSearch', searchKey.value)
 }
+
+watch(
+  () => props.placeholderSearchFor,
+  () => {
+    searchKey.value = ''
+    emit('onSearch', searchKey.value)
+  }
+)
 </script>
 
 <style scoped lang="scss">

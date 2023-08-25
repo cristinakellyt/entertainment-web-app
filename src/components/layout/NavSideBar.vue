@@ -4,7 +4,7 @@
       <img src="/logo.svg" alt="logo" class="icon-nav-home" />
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
-          <router-link :to="{ name: 'overview', params: { data: JSON.stringify(navPages.home) } }">
+          <router-link :to="{ name: 'overview', params: { data: 'overview' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -15,7 +15,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link :to="{ name: 'movies', params: { data: JSON.stringify(navPages.movies) } }">
+          <router-link :to="{ name: 'movies', params: { data: 'movies' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -26,9 +26,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link
-            :to="{ name: 'tv-series', params: { data: JSON.stringify(navPages.series) } }"
-          >
+          <router-link :to="{ name: 'tv-series', params: { data: 'tv-series' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -39,9 +37,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link
-            :to="{ name: 'bookmarked', params: { data: JSON.stringify(navPages.bookmarked) } }"
-          >
+          <router-link :to="{ name: 'bookmarked', params: { data: 'bookmark' } }">
             <svg width="17" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -56,73 +52,6 @@
     </nav>
   </div>
 </template>
-
-<script setup>
-const navPages = {
-  home: {
-    search: {
-      placeholder: 'movies and TV Series',
-      filterBy: 'all'
-    },
-    mainContent: [
-      {
-        filterBy: 'trending',
-        title: 'Trending',
-        isCarrousel: true
-      },
-      {
-        filterBy: 'not-trending',
-        title: 'Recommended',
-        isCarrousel: false
-      }
-    ]
-  },
-  movies: {
-    search: {
-      placeholder: 'movies',
-      filterBy: 'movies'
-    },
-    mainContent: [
-      {
-        filterBy: 'movies',
-        title: 'Movies',
-        isCarrousel: false
-      }
-    ]
-  },
-  series: {
-    search: {
-      placeholder: 'TV Series',
-      filterBy: 'tv-series'
-    },
-    mainContent: [
-      {
-        filterBy: 'tv-series',
-        title: 'TV Series',
-        isCarrousel: false
-      }
-    ]
-  },
-  bookmarked: {
-    search: {
-      placeholder: 'bookmarked shows',
-      filterBy: 'bookmarked'
-    },
-    mainContent: [
-      {
-        filterBy: 'bookmarked-movies',
-        title: 'Bookmarked Movies',
-        isCarrousel: false
-      },
-      {
-        filterBy: 'bookmarked-tv-series',
-        title: 'Bookmarked TV Series',
-        isCarrousel: false
-      }
-    ]
-  }
-}
-</script>
 
 <style scoped lang="scss">
 @import '@/assets/scss/main.scss';
