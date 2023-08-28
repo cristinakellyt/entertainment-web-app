@@ -43,7 +43,7 @@ onMounted(() => {
 })
 
 const filterAvailableFilms = (filterKey) => {
-  filteredFilms.value = availableFilmsStore.getListOf(filterKey)
+  filteredFilms.value = availableFilmsStore.filterBy(filterKey)
 
   if (props.searchFor) {
     isSearching.value = true
@@ -56,7 +56,7 @@ const filterAvailableFilms = (filterKey) => {
 
 const changeBookmark = (film) => {
   availableFilmsStore.toggleBookmarked(film)
-  filteredFilms.value = availableFilmsStore.getListOf(props.filterBy)
+  filteredFilms.value = availableFilmsStore.filterBy(props.filterBy)
 }
 </script>
 

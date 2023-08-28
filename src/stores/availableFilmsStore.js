@@ -1,9 +1,13 @@
 import { defineStore } from 'pinia'
 import data from '@/data.json'
 
+if (localStorage.getItem('availableFilms') === null) {
+  localStorage.setItem('availableFilms', JSON.stringify(data))
+}
+
 export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
   state: () => ({
-    availableFilms: data,
+    availableFilms: JSON.parse(localStorage.getItem('availableFilms')),
     filteredFilms: []
   }),
   getters: {
@@ -12,7 +16,7 @@ export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
     }
   },
   actions: {
-    getListOf(filterKey) {
+    filterBy(filterKey) {
       if (filterKey === 'all') {
         this.filteredFilms = this.availableFilms
       } else if (filterKey === 'movies') {
@@ -38,8 +42,18 @@ export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
     },
 
     toggleBookmarked(title) {
-      const selectedMovie = this.availableFilms.find((films) => films.title === title)
-      selectedMovie.isBookmarked = !selectedMovie.isBookmarked
+      const selectedFilm = this.availableFilms.find((films) => films.title === title)
+      selectedFilm.isBookmarked = !selectedFilm.isBookmarked
+
+      // Get the current data from localStorage
+      const localStorageData = JSON.parse(localStorage.getItem('availableFilms')) || []
+
+      // Find the index of the selected movie in localStorageData
+      const localStorageFilm = localStorageData.find((films) => films.title === title)
+      localStorageFilm.isBookmarked = !localStorageFilm.isBookmarked
+
+      // Update the data in localStorage
+      localStorage.setItem('availableFilms', JSON.stringify(localStorageData))
     }
   }
 })
