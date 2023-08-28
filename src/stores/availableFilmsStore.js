@@ -40,7 +40,6 @@ export const useAvailableFilmsStore = defineStore('availableFilmsStore', {
     toggleBookmarked(title) {
       const selectedMovie = this.availableFilms.find((films) => films.title === title)
       selectedMovie.isBookmarked = !selectedMovie.isBookmarked
-      return selectedMovie
     }
   }
 })

@@ -2,20 +2,20 @@
   <div class="flex-column-gap">
     <SearchBar
       :size="screenSizeStore.isMobile ? 'small' : 'large'"
-      :placeholderSearchFor="contentPageKeywords.search.placeholder"
+      :placeholderSearchFor="pageContent().search.placeholder"
       @onSearch="onSearch"
     />
 
     <FilteredFilms
       v-if="filmSearched"
       :searchFor="filmSearched"
-      :filterBy="contentPageKeywords.search.filterBy"
+      :filterBy="pageContent().search.filterBy"
       :key="filmSearched"
     ></FilteredFilms>
 
     <div v-else class="flex-column-gap">
       <FilteredFilms
-        v-for="movie in contentPageKeywords.mainContent"
+        v-for="movie in pageContent().mainContent"
         :filterBy="movie.filterBy"
         :isCarrousel="movie.isCarrousel"
         :key="movie.title"
@@ -28,18 +28,25 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
+import { usePageContentStore } from '@/stores/pageContentStore'
+
 import SearchBar from '@/components/ui/SearchBar.vue'
 import FilteredFilms from '@/components/FilteredFilms.vue'
 
+const route = useRoute()
 const screenSizeStore = useScreenSizeStore()
+const pageContentStore = usePageContentStore()
 
 const filmSearched = ref()
 
-defineProps({ contentPageKeywords: { type: Object } })
-
 const onSearch = (searchKey) => {
   return (filmSearched.value = searchKey)
+}
+
+const pageContent = () => {
+  return pageContentStore.fetchPageContent(route.params.data)
 }
 </script>
 
