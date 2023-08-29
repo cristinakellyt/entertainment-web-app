@@ -1,10 +1,10 @@
 <template>
   <div class="side-bar">
     <nav class="side-bar__nav">
-      <img src="@/assets/logo.svg" alt="logo" class="icon-nav-home" />
+      <img src="/logo.svg" alt="logo" class="icon-nav-home" />
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
-          <router-link to="/home">
+          <router-link :to="{ name: 'overview', params: { data: 'overview' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -15,7 +15,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link to="/movies">
+          <router-link :to="{ name: 'movies', params: { data: 'movies' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -26,7 +26,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link to="/tv-series">
+          <router-link :to="{ name: 'tv-series', params: { data: 'tv-series' } }">
             <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -37,7 +37,7 @@
           </router-link>
         </li>
         <li class="side-bar__nav--item">
-          <router-link to="/bookmarked">
+          <router-link :to="{ name: 'bookmarked', params: { data: 'bookmark' } }">
             <svg width="17" height="20" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="icon-nav"
@@ -48,7 +48,7 @@
           </router-link>
         </li>
       </ul>
-      <img src="@/assets/image-avatar.png" alt="user image" class="user-image" />
+      <img src="/image-avatar.png" alt="user image" class="user-image" />
     </nav>
   </div>
 </template>

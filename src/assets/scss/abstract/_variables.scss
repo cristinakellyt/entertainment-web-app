@@ -15,3 +15,56 @@ $max-width: pxToRem(1440);
   display: flex;
   flex-direction: column;
 }
+
+%heading-large {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(32);
+  font-style: normal;
+  font-weight: 300;
+  color: $pure-white;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+
+%heading-medium {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(24);
+  font-style: normal;
+  font-weight: 300;
+  color: $pure-white;
+  line-height: normal;
+}
+
+%heading-small {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(24);
+  font-style: normal;
+  font-weight: 500;
+  color: $pure-white;
+  line-height: normal;
+}
+
+%heading-extra-small {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(18);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+%body-medium {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(15);
+  font-style: normal;
+  font-weight: 300;
+  color: $pure-white;
+  line-height: normal;
+}
+
+%body-small {
+  font-family: 'Outfit', sans-serif;
+  font-size: pxToRem(13);
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}

@@ -1,4 +1,3 @@
 <template>
-  <p>Trending</p>
-  <p>Recommended</p>
+  <h1>Implement Home View</h1>
 </template>

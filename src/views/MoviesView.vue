@@ -1,3 +1,0 @@
-<template>
-  <h1>movies</h1>
-</template>

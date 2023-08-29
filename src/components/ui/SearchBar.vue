@@ -1,14 +1,43 @@
 <template>
   <div :class="`search-bar ${size}`">
-    <img :class="`search-icon ${size}`" src="@/assets/icon-search.svg" />
-    <input :class="`${size}`" type="text" placeholder="Search for movies or TV series" />
+    <img :class="`search-icon ${size}`" src="/icon-search.svg" />
+    <input
+      :class="`${size}`"
+      type="text"
+      :placeholder="`Search for ${placeholderSearchFor}`"
+      v-model.trim="searchKey"
+      @input="onInputHandler"
+      @keyup.enter="onEnterHandler"
+    />
   </div>
 </template>
 
 <script setup>
-defineProps({
-  size: String
+import { ref, watch } from 'vue'
+
+const props = defineProps({
+  size: String,
+  placeholderSearchFor: String
 })
+const emit = defineEmits(['onSearch'])
+
+const searchKey = ref('')
+
+const onInputHandler = () => {
+  if (searchKey.value === '') emit('onSearch', searchKey.value)
+}
+
+const onEnterHandler = () => {
+  emit('onSearch', searchKey.value)
+}
+
+watch(
+  () => props.placeholderSearchFor,
+  () => {
+    searchKey.value = ''
+    emit('onSearch', searchKey.value)
+  }
+)
 </script>
 
 <style scoped lang="scss">
@@ -27,10 +56,8 @@ defineProps({
 }
 
 input {
+  @extend %heading-medium;
   width: 100%;
-  font-family: 'Outfit', sans-serif;
-  color: $pure-white;
-  font-weight: 300;
   background-color: transparent;
   caret-color: $red;
   border: none;
