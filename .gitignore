@@ -28,3 +28,5 @@ coverage
 *.sw?
 
 .prettierignore
+# Local Netlify folder
+.netlify
