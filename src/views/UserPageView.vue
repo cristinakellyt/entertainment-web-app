@@ -27,8 +27,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { onBeforeMount, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
 import { usePageContentStore } from '@/stores/pageContentStore'
 
@@ -36,6 +36,7 @@ import SearchBar from '@/components/ui/SearchBar.vue'
 import FilteredFilms from '@/components/FilteredFilms.vue'
 
 const route = useRoute()
+const router = useRouter()
 const screenSizeStore = useScreenSizeStore()
 const pageContentStore = usePageContentStore()
 
@@ -45,7 +46,17 @@ const onSearch = (searchKey) => {
   return (filmSearched.value = searchKey)
 }
 
+onBeforeMount(() => {
+  if (!route.params.data) {
+    router.push({ name: 'overview', params: { data: 'overview' } })
+    return
+  }
+})
+
 const pageContent = () => {
+  if (!route.params.data) {
+    return pageContentStore.fetchPageContent('overview')
+  }
   return pageContentStore.fetchPageContent(route.params.data)
 }
 </script>

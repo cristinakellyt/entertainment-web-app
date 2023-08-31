@@ -1,7 +1,9 @@
 <template>
   <div class="side-bar">
     <nav class="side-bar__nav">
-      <img src="/logo.svg" alt="logo" class="icon-nav-home" />
+      <router-link :to="{ name: 'home' }">
+        <img src="/logo.svg" alt="logo" class="icon-nav-home" />
+      </router-link>
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
           <router-link :to="{ name: 'overview', params: { data: 'overview' } }">
