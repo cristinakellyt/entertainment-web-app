@@ -1,10 +1,8 @@
 <template>
   <BaseWidth>
-    <div class="layout">
-      <NavSideBar />
-      <div class="main-content">
-        <router-view></router-view>
-      </div>
+    <NavSideBar />
+    <div class="main-content">
+      <router-view></router-view>
     </div>
   </BaseWidth>
 </template>
@@ -29,10 +27,8 @@ screenSizeStore.initResponsive()
 }
 
 .main-content {
-  display: flex;
-  flex-direction: column;
-  gap: pxToRem(35);
   margin: pxToRem(32) 0;
+  padding-left: calc(pxToRem(96) + pxToRem(36));
 }
 
 @media only screen and (max-width: 48em) {

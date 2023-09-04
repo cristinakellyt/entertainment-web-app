@@ -68,5 +68,6 @@ const pageContent = () => {
   display: flex;
   flex-direction: column;
   gap: pxToRem(35);
+  overflow: hidden;
 }
 </style>

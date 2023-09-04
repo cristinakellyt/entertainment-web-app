@@ -64,6 +64,8 @@
   width: pxToRem(96);
   height: pxToRem(960);
   padding: pxToRem(32) 0;
+  position: fixed;
+  z-index: 100;
 
   &__nav {
     @include flex-direction-justify-align(column, space-between, center);
@@ -96,9 +98,10 @@
 
 @media only screen and (max-width: 48em) {
   .side-bar {
-    width: 100%;
+    width: 90%;
     height: pxToRem(72);
     padding: 0 pxToRem(32);
+    margin: 0 pxToRem(25);
 
     &__nav {
       flex-direction: row;

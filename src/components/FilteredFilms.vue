@@ -65,7 +65,7 @@ const changeBookmark = (film) => {
 .carrousel {
   display: flex;
   gap: pxToRem(40);
-  white-space: nowrap;
+  width: fit-content;
 
   &-card {
     width: pxToRem(470);
@@ -79,7 +79,7 @@ const changeBookmark = (film) => {
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(4, 280px);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 280px));
   gap: pxToRem(40);
 }
 </style>

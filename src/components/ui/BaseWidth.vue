@@ -10,7 +10,7 @@
 .base-width {
   max-width: $max-width;
   margin: 0 auto;
-  padding: pxToRem(32);
+  padding: pxToRem(32) 0;
 }
 
 @media only screen and (max-width: 23.438em) {
