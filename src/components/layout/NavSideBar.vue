@@ -117,11 +117,12 @@
 
 @media only screen and (max-width: 23.438em) {
   .side-bar {
+    width: 100%;
     position: fixed;
     top: 0;
     right: 0;
     height: pxToRem(56);
-    margin-left: pxToRem(-32);
+    margin: 0;
     padding: 0 pxToRem(16);
     border-radius: 0;
     z-index: 100;

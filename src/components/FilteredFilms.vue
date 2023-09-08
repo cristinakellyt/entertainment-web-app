@@ -79,7 +79,21 @@ const changeBookmark = (film) => {
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 280px));
+  grid-template-columns: repeat(auto-fit, minmax(pxToRem(232), 1fr));
   gap: pxToRem(40);
+}
+
+@media only screen and (max-width: 48em) {
+  .grid-layout {
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr));
+    gap: pxToRem(29);
+  }
+}
+
+@media only screen and (max-width: 23.438em) {
+  .grid-layout {
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), 1fr));
+    gap: pxToRem(16);
+  }
 }
 </style>
