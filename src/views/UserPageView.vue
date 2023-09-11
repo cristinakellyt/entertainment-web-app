@@ -70,4 +70,10 @@ const pageContent = () => {
   gap: pxToRem(35);
   overflow: hidden;
 }
+
+@media only screen and (max-width: 23.438em) {
+  .flex-column-gap {
+    gap: pxToRem(20);
+  }
+}
 </style>

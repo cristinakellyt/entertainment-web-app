@@ -95,5 +95,9 @@ const changeBookmark = (film) => {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), 1fr));
     gap: pxToRem(16);
   }
+
+  .heading-secondary {
+    font-size: pxToRem(20);
+  }
 }
 </style>

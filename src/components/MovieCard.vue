@@ -167,10 +167,27 @@ const toggleBookmarked = () => {
 .normal-style {
   & p {
     @extend %body-small;
+    opacity: 0.75;
   }
 
   & h3 {
     @extend %heading-extra-small;
+  }
+}
+
+@media only screen and (max-width: 23.438em) {
+  .movie-details {
+    gap: pxToRem(5);
+  }
+
+  .normal-style {
+    & p {
+      font-size: pxToRem(11);
+    }
+
+    & h3 {
+      font-size: pxToRem(14);
+    }
   }
 }
 </style>
