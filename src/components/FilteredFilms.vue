@@ -99,5 +99,14 @@ const changeBookmark = (film) => {
   .heading-secondary {
     font-size: pxToRem(20);
   }
+
+  .carrousel {
+    gap: pxToRem(16);
+
+    &-card {
+      width: pxToRem(240);
+      height: pxToRem(140);
+    }
+  }
 }
 </style>

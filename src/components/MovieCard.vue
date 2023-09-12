@@ -189,5 +189,15 @@ const toggleBookmarked = () => {
       font-size: pxToRem(14);
     }
   }
+
+  .carrousel-style {
+    & p {
+      font-size: pxToRem(12);
+    }
+
+    & h3 {
+      font-size: pxToRem(15);
+    }
+  }
 }
 </style>
