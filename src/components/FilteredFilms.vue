@@ -65,7 +65,7 @@ const changeBookmark = (film) => {
 .carrousel {
   display: flex;
   gap: pxToRem(40);
-  white-space: nowrap;
+  width: fit-content;
 
   &-card {
     width: pxToRem(470);
@@ -79,7 +79,34 @@ const changeBookmark = (film) => {
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(4, 280px);
+  grid-template-columns: repeat(auto-fit, minmax(pxToRem(232), 1fr));
   gap: pxToRem(40);
+}
+
+@media only screen and (max-width: 48em) {
+  .grid-layout {
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr));
+    gap: pxToRem(29);
+  }
+}
+
+@media only screen and (max-width: 23.438em) {
+  .grid-layout {
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), 1fr));
+    gap: pxToRem(16);
+  }
+
+  .heading-secondary {
+    font-size: pxToRem(20);
+  }
+
+  .carrousel {
+    gap: pxToRem(16);
+
+    &-card {
+      width: pxToRem(240);
+      height: pxToRem(140);
+    }
+  }
 }
 </style>
