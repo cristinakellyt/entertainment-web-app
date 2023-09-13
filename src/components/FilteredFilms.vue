@@ -4,21 +4,23 @@
   </h2>
   <h2 v-else class="heading-secondary"><slot>Name</slot></h2>
 
-  <div :class="isCarrousel ? 'carrousel' : 'grid-layout'">
-    <MovieCard
-      @toggleBookmark="changeBookmark"
-      v-for="movie in filteredFilms"
-      :key="movie.title"
-      :category="movie.category"
-      :isBookmarked="movie.isBookmarked"
-      :isTrending="movie.isTrending"
-      :thumbnail="movie.thumbnail"
-      :title="movie.title"
-      :rating="movie.rating"
-      :year="movie.year"
-      :isCarrousel="isCarrousel"
-      :class="isCarrousel ? 'carrousel-card' : 'movie-card'"
-    />
+  <div :class="isCarrousel ? 'carrousel-scroll' : ''">
+    <ul :class="isCarrousel ? 'carrousel' : 'grid-layout'">
+      <MovieCard
+        @toggleBookmark="changeBookmark"
+        v-for="movie in filteredFilms"
+        :key="movie.title"
+        :category="movie.category"
+        :isBookmarked="movie.isBookmarked"
+        :isTrending="movie.isTrending"
+        :thumbnail="movie.thumbnail"
+        :title="movie.title"
+        :rating="movie.rating"
+        :year="movie.year"
+        :isCarrousel="isCarrousel"
+        :class="isCarrousel ? 'carrousel-card' : 'movie-card'"
+      />
+    </ul>
   </div>
 </template>
 
@@ -66,6 +68,22 @@ const changeBookmark = (film) => {
   display: flex;
   gap: pxToRem(40);
   width: fit-content;
+
+  &-scroll {
+    overflow: scroll;
+    scrollbar-color: red orange;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: pxToRem(3);
+      background-color: $pure-white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $greyish-blue;
+    }
+  }
 
   &-card {
     width: pxToRem(470);
