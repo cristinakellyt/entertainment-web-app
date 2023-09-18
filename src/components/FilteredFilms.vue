@@ -91,26 +91,30 @@ const changeBookmark = (film) => {
   }
 }
 
+.movie-card {
+  max-width: pxToRem(293);
+}
+
 .heading-secondary {
   @extend %heading-large;
 }
 
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(pxToRem(232), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(pxToRem(232), max-content));
   gap: pxToRem(40);
 }
 
 @media only screen and (max-width: 48em) {
   .grid-layout {
-    grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), max-content));
     gap: pxToRem(29);
   }
 }
 
 @media only screen and (max-width: 23.438em) {
   .grid-layout {
-    grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), max-content));
     gap: pxToRem(16);
   }
 
