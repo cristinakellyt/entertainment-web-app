@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card">
+  <div class="show-card">
     <div class="hovering">
       <img :src="imageSource" class="movie-image" />
       <div class="movie-play">
@@ -90,7 +90,7 @@ const toggleBookmarked = () => {
 <style scoped lang="scss">
 @import '@/assets/scss/main.scss';
 
-.movie-card {
+.show-card {
   position: relative;
 }
 .movie-image {
