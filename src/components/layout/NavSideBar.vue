@@ -1,9 +1,7 @@
 <template>
-  <div class="side-bar">
+  <aside class="side-bar">
     <nav class="side-bar__nav">
-      <router-link :to="{ name: 'home' }">
-        <img src="/logo.svg" alt="logo" class="icon-nav-home" />
-      </router-link>
+      <img src="/logo.svg" alt="logo" class="icon-nav-home" />
       <ul class="side-bar__nav--list">
         <li class="side-bar__nav--item">
           <router-link :to="{ name: 'overview', params: { data: 'overview' } }">
@@ -52,7 +50,7 @@
       </ul>
       <img src="/image-avatar.png" alt="user image" class="user-image" />
     </nav>
-  </div>
+  </aside>
 </template>
 
 <style scoped lang="scss">
@@ -93,7 +91,7 @@
   width: pxToRem(40);
   height: pxToRem(40);
   border-radius: pxToRem(40);
-  border: 1px solid $pure-white;
+  border: pxToRem(1) solid $pure-white;
 }
 
 @include media-query($tablet) {

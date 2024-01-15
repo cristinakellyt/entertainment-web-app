@@ -110,6 +110,7 @@ const changeBookmark = (film) => {
   .grid-layout {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), max-content));
     gap: pxToRem(29);
+    justify-content: center;
   }
 
   .carrousel {
