@@ -1,5 +1,8 @@
 import { defineStore } from 'pinia'
 
+const MOBILE_WIDTH = 375
+const TABLET_WIDTH = 768
+
 export const useScreenSizeStore = defineStore('screenSizeStore', {
   state: () => ({
     isMobile: false,
@@ -8,13 +11,13 @@ export const useScreenSizeStore = defineStore('screenSizeStore', {
   actions: {
     initResponsive() {
       const width = window.innerWidth
-      this.isMobile = width <= 375
-      this.isTablet = width > 375 && width <= 768
+      this.isMobile = width <= MOBILE_WIDTH
+      this.isTablet = width > MOBILE_WIDTH && width <= TABLET_WIDTH
 
       window.addEventListener('resize', () => {
         const newWidth = window.innerWidth
-        this.isMobile = newWidth <= 375
-        this.isTablet = newWidth > 375 && newWidth <= 768
+        this.isMobile = newWidth <= MOBILE_WIDTH
+        this.isTablet = newWidth > MOBILE_WIDTH && newWidth <= TABLET_WIDTH
       })
     }
   }

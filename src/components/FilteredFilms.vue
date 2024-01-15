@@ -71,17 +71,18 @@ const changeBookmark = (film) => {
 
   &-scroll {
     overflow: scroll;
-    scrollbar-color: red orange;
-    scrollbar-width: thin;
+    cursor: pointer;
 
     &::-webkit-scrollbar {
       width: 0;
-      height: pxToRem(3);
+      height: pxToRem(5);
       background-color: $pure-white;
+      border-radius: pxToRem(10);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: $greyish-blue;
+      background-color: $red;
+      border-radius: pxToRem(10);
     }
   }
 
@@ -109,6 +110,15 @@ const changeBookmark = (film) => {
   .grid-layout {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), max-content));
     gap: pxToRem(29);
+  }
+
+  .carrousel {
+    gap: pxToRem(29);
+
+    &-card {
+      width: pxToRem(350);
+      height: pxToRem(170);
+    }
   }
 }
 
