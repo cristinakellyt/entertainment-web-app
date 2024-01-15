@@ -19,12 +19,12 @@ screenSizeStore.initResponsive()
 <style scoped lang="scss">
 @import '@/assets/scss/main.scss';
 
-.layout {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: pxToRem(32);
-  overflow: hidden;
-}
+// .layout {
+//   display: grid;
+//   grid-template-columns: auto 1fr;
+//   gap: pxToRem(32);
+//   overflow: hidden;
+// }
 
 .main-content {
   margin: pxToRem(32) pxToRem(16) 0 0;
@@ -32,10 +32,10 @@ screenSizeStore.initResponsive()
 }
 
 @include media-query($tablet) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
+  // .layout {
+  //   grid-template-columns: 1fr;
+  //   gap: 0;
+  // }
 
   .main-content {
     margin: pxToRem(98) 0;
