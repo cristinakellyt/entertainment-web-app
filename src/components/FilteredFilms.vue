@@ -106,10 +106,11 @@ const changeBookmark = (film) => {
   gap: pxToRem(40);
 }
 
-@media only screen and (max-width: 48em) {
+@include media-query($tablet) {
   .grid-layout {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(180), max-content));
     gap: pxToRem(29);
+    justify-content: center;
   }
 
   .carrousel {
@@ -122,7 +123,7 @@ const changeBookmark = (film) => {
   }
 }
 
-@media only screen and (max-width: 23.438em) {
+@include media-query($mobile-medium) {
   .grid-layout {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), max-content));
     gap: pxToRem(16);

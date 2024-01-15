@@ -7,7 +7,6 @@
       :placeholder="`Search for ${placeholderSearchFor}`"
       v-model.trim="searchKey"
       @input="onInputHandler"
-      @keyup.enter="onEnterHandler"
     />
   </div>
 </template>
@@ -24,10 +23,6 @@ const emit = defineEmits(['onSearch'])
 const searchKey = ref('')
 
 const onInputHandler = () => {
-  if (searchKey.value === '') emit('onSearch', searchKey.value)
-}
-
-const onEnterHandler = () => {
   emit('onSearch', searchKey.value)
 }
 

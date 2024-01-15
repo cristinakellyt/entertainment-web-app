@@ -3,7 +3,7 @@
     <SearchBar
       :size="screenSizeStore.isMobile ? 'small' : 'large'"
       :placeholderSearchFor="pageContent().search.placeholder"
-      @onSearch="onSearch"
+      @onSearch="searchVideo"
     />
 
     <FilteredFilms
@@ -31,7 +31,6 @@ import { onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
 import { usePageContentStore } from '@/stores/pageContentStore'
-
 import SearchBar from '@/components/ui/SearchBar.vue'
 import FilteredFilms from '@/components/FilteredFilms.vue'
 
@@ -42,8 +41,8 @@ const pageContentStore = usePageContentStore()
 
 const filmSearched = ref()
 
-const onSearch = (searchKey) => {
-  return (filmSearched.value = searchKey)
+const searchVideo = (searchKey) => {
+  filmSearched.value = searchKey
 }
 
 onBeforeMount(() => {
@@ -71,7 +70,7 @@ const pageContent = () => {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 23.438em) {
+@include media-query($mobile-medium) {
   .flex-column-gap {
     gap: pxToRem(20);
   }

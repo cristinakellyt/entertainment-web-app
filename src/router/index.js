@@ -15,35 +15,30 @@ const router = createRouter({
           component: () => import('@/views/UserPageView.vue')
         },
         {
-          path: 'overview/:data',
+          path: ':data',
           name: 'overview',
           component: () => import('@/views/UserPageView.vue'),
           props: true
         },
         {
-          path: 'movies/:data',
+          path: ':data',
           name: 'movies',
           component: () => import('@/views/UserPageView.vue'),
           props: true
         },
         {
-          path: 'tv-series/:data',
+          path: ':data',
           name: 'tv-series',
           component: () => import('@/views/UserPageView.vue'),
           props: true
         },
         {
-          path: 'bookmarked/:data',
+          path: ':data',
           name: 'bookmarked',
           component: () => import('@/views/UserPageView.vue'),
           props: true
         }
       ]
-    },
-    {
-      path: '/home ',
-      name: 'home',
-      component: () => import('@/views/HomeView.vue')
     },
     {
       path: '/login',

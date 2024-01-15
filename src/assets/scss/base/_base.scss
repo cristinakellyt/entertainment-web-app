@@ -15,6 +15,21 @@ body {
   font-size: pxToRem(18);
   background-color: $dark-blue;
   color: $pure-white;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: pxToRem(10);
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $greyish-blue;
+    border-radius: pxToRem(5);
+  }
 }
 
 ul {
