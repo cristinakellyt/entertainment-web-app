@@ -68,3 +68,12 @@ $max-width: pxToRem(1440);
   font-weight: 300;
   line-height: normal;
 }
+
+// MEDIA QUERIES
+
+$laptop: 90em; // 1440px
+$laptop-medium: 64em; // 1024px
+$tablet: 48em; //768px
+$mobile-large: 26.563em; //425px
+$mobile-medium: 23.438em; //375px
+$mobile-small: 20em; //320px

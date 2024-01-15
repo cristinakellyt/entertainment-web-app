@@ -134,7 +134,7 @@ const toggleBookmarked = () => {
   position: absolute;
   top: pxToRem(16);
   right: pxToRem(16);
-  border-radius: 50px;
+  border-radius: pxToRem(50);
   cursor: pointer;
   background: none;
   border: none;
@@ -175,7 +175,7 @@ const toggleBookmarked = () => {
   }
 }
 
-@media only screen and (max-width: 23.438em) {
+@include media-query($mobile-medium) {
   .movie-details {
     gap: pxToRem(5);
   }

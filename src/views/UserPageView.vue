@@ -71,7 +71,7 @@ const pageContent = () => {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 23.438em) {
+@include media-query($mobile-medium) {
   .flex-column-gap {
     gap: pxToRem(20);
   }

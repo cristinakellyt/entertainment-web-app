@@ -4,3 +4,9 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin media-query($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}

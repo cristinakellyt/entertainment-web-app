@@ -96,7 +96,7 @@
   border: 1px solid $pure-white;
 }
 
-@media only screen and (max-width: 48em) {
+@include media-query($tablet) {
   .side-bar {
     width: 90%;
     height: pxToRem(72);
@@ -115,7 +115,7 @@
   }
 }
 
-@media only screen and (max-width: 23.438em) {
+@include media-query($mobile-medium) {
   .side-bar {
     width: 100%;
     position: fixed;
