@@ -70,7 +70,7 @@ const pageContent = () => {
   overflow: hidden;
 }
 
-@include media-query($mobile-medium) {
+@include media-query($mobile-large) {
   .flex-column-gap {
     gap: pxToRem(20);
   }

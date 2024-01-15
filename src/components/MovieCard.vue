@@ -175,7 +175,7 @@ const toggleBookmarked = () => {
   }
 }
 
-@include media-query($mobile-medium) {
+@include media-query($mobile-large) {
   .movie-details {
     gap: pxToRem(5);
   }

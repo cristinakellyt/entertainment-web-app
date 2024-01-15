@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const MOBILE_WIDTH = 375
+const MOBILE_WIDTH = 425
 const TABLET_WIDTH = 768
 
 export const useScreenSizeStore = defineStore('screenSizeStore', {
