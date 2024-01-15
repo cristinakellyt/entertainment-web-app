@@ -123,7 +123,7 @@ const changeBookmark = (film) => {
   }
 }
 
-@include media-query($mobile-medium) {
+@include media-query($mobile-large) {
   .grid-layout {
     grid-template-columns: repeat(auto-fit, minmax(pxToRem(128), max-content));
     gap: pxToRem(16);
