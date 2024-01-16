@@ -1,32 +1,39 @@
 <template>
-  <div class="flex-column-gap">
-    <SearchBar
-      :size="screenSizeStore.isMobile ? 'small' : 'large'"
-      :placeholderSearchFor="pageContent().search.placeholder"
-      @onSearch="searchVideo"
-    />
+  <BaseWidth>
+    <NavSideBar />
+    <div class="main-content">
+      <div class="flex-column-gap">
+        <SearchBar
+          :size="screenSizeStore.isMobile ? 'small' : 'large'"
+          :placeholderSearchFor="pageContent().search.placeholder"
+          @onSearch="searchVideo"
+        />
 
-    <FilteredFilms
-      v-if="filmSearched"
-      :searchFor="filmSearched"
-      :filterBy="pageContent().search.filterBy"
-      :key="filmSearched"
-    ></FilteredFilms>
+        <FilteredFilms
+          v-if="filmSearched"
+          :searchFor="filmSearched"
+          :filterBy="pageContent().search.filterBy"
+          :key="filmSearched"
+        ></FilteredFilms>
 
-    <div v-else class="flex-column-gap">
-      <FilteredFilms
-        v-for="movie in pageContent().mainContent"
-        :filterBy="movie.filterBy"
-        :isCarrousel="movie.isCarrousel"
-        :key="movie.title"
-      >
-        {{ movie.title }}</FilteredFilms
-      >
+        <div v-else class="flex-column-gap">
+          <FilteredFilms
+            v-for="movie in pageContent().mainContent"
+            :filterBy="movie.filterBy"
+            :isCarrousel="movie.isCarrousel"
+            :key="movie.title"
+          >
+            {{ movie.title }}</FilteredFilms
+          >
+        </div>
+      </div>
     </div>
-  </div>
+  </BaseWidth>
 </template>
 
 <script setup>
+import NavSideBar from '@/components/layout/NavSideBar.vue'
+import BaseWidth from '@/components/ui/BaseWidth.vue'
 import { onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
@@ -50,6 +57,8 @@ onBeforeMount(() => {
     router.push({ name: 'overview', params: { data: 'overview' } })
     return
   }
+
+  router.push({ name: route.params.data, params: { data: route.params.data } })
 })
 
 const pageContent = () => {
@@ -70,9 +79,30 @@ const pageContent = () => {
   overflow: hidden;
 }
 
+.main-content {
+  margin: pxToRem(32) pxToRem(16) 0 0;
+  padding-left: calc(pxToRem(96) + pxToRem(36));
+}
+
+@include media-query($tablet) {
+  .main-content {
+    margin: pxToRem(98) 0;
+    padding-left: pxToRem(25);
+    padding-right: pxToRem(25);
+  }
+}
+
 @include media-query($mobile-large) {
   .flex-column-gap {
     gap: pxToRem(20);
+  }
+}
+
+@include media-query($mobile-medium) {
+  .main-content {
+    margin: pxToRem(50) 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 </style>
