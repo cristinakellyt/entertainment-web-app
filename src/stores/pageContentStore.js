@@ -70,9 +70,14 @@ export const usePageContentStore = defineStore('pageContentStore', {
     navPages: pageContent,
     pageView: null
   }),
+  getters: {
+    getPageContent() {
+      return this.pageView
+    }
+  },
   actions: {
     fetchPageContent(dataKey) {
-      if (dataKey === 'bookmark') {
+      if (dataKey === 'bookmarked') {
         this.pageView = this.navPages.bookmarked
       } else if (dataKey === 'tv-series') {
         this.pageView = this.navPages.series

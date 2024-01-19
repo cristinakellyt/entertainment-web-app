@@ -1,4 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { usePageContentStore } from '@/stores/pageContentStore'
+
+const loadPageContent = async (page) => {
+  const pageContentStore = usePageContentStore()
+  pageContentStore.fetchPageContent(page)
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,31 +18,44 @@ const router = createRouter({
       children: [
         {
           path: '',
+          redirect: 'app/overview',
           component: () => import('@/views/UserPageView.vue')
         },
         {
-          path: ':data',
+          path: 'overview',
           name: 'overview',
           component: () => import('@/views/UserPageView.vue'),
-          props: true
+          beforeEnter: (to, from, next) => {
+            loadPageContent('overview')
+            next()
+          }
         },
         {
-          path: ':data',
+          path: 'movies',
           name: 'movies',
           component: () => import('@/views/UserPageView.vue'),
-          props: true
+          beforeEnter: (to, from, next) => {
+            loadPageContent('movies')
+            next()
+          }
         },
         {
-          path: ':data',
+          path: 'tv-series',
           name: 'tv-series',
           component: () => import('@/views/UserPageView.vue'),
-          props: true
+          beforeEnter: (to, from, next) => {
+            loadPageContent('tv-series')
+            next()
+          }
         },
         {
-          path: ':data',
+          path: 'bookmarked',
           name: 'bookmarked',
           component: () => import('@/views/UserPageView.vue'),
-          props: true
+          beforeEnter: (to, from, next) => {
+            loadPageContent('bookmarked')
+            next()
+          }
         }
       ]
     },

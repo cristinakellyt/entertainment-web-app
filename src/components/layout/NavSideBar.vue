@@ -5,7 +5,7 @@
         <img src="/logo.svg" alt="logo" class="icon-nav-home" />
         <ul class="side-bar__nav--list">
           <li class="side-bar__nav--item">
-            <router-link :to="{ name: 'overview', params: { data: 'overview' } }">
+            <router-link :to="{ name: 'overview' }">
               <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
                   class="icon-nav"
@@ -16,7 +16,7 @@
             </router-link>
           </li>
           <li class="side-bar__nav--item">
-            <router-link :to="{ name: 'movies', params: { data: 'movies' } }">
+            <router-link :to="{ name: 'movies' }">
               <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
                   class="icon-nav"
@@ -27,7 +27,7 @@
             </router-link>
           </li>
           <li class="side-bar__nav--item">
-            <router-link :to="{ name: 'tv-series', params: { data: 'tv-series' } }">
+            <router-link :to="{ name: 'tv-series' }">
               <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
                   class="icon-nav"
@@ -38,7 +38,7 @@
             </router-link>
           </li>
           <li class="side-bar__nav--item">
-            <router-link :to="{ name: 'bookmarked', params: { data: 'bookmark' } }">
+            <router-link :to="{ name: 'bookmarked' }">
               <svg width="17" height="20" xmlns="http://www.w3.org/2000/svg">
                 <path
                   class="icon-nav"

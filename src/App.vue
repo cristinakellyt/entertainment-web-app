@@ -1,5 +1,5 @@
 <template>
-  <RouterView />
+  <RouterView :key="$route.fullPath" />
 </template>
 
 <script setup>
@@ -9,4 +9,3 @@ import { RouterView } from 'vue-router'
 const screenSizeStore = useScreenSizeStore()
 screenSizeStore.initResponsive()
 </script>
-

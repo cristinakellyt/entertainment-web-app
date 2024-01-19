@@ -4,21 +4,21 @@
     <div class="main-content">
       <div class="flex-column-gap">
         <SearchBar
-          :size="screenSizeStore.isMobile ? 'small' : 'large'"
-          :placeholderSearchFor="pageContent().search.placeholder"
+          :size="screenSize"
+          :placeholderSearchFor="initializeData.search.placeholder"
           @onSearch="searchVideo"
         />
 
         <FilteredFilms
           v-if="filmSearched"
           :searchFor="filmSearched"
-          :filterBy="pageContent().search.filterBy"
+          :filterBy="initializeData.search.filterBy"
           :key="filmSearched"
         ></FilteredFilms>
 
         <div v-else class="flex-column-gap">
           <FilteredFilms
-            v-for="movie in pageContent().mainContent"
+            v-for="movie in initializeData.mainContent"
             :filterBy="movie.filterBy"
             :isCarrousel="movie.isCarrousel"
             :key="movie.title"
@@ -34,39 +34,27 @@
 <script setup>
 import NavSideBar from '@/components/layout/NavSideBar.vue'
 import BaseWidth from '@/components/ui/BaseWidth.vue'
-import { onBeforeMount, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, onBeforeMount, ref } from 'vue'
 import { useScreenSizeStore } from '@/stores/screenSizeStore'
 import { usePageContentStore } from '@/stores/pageContentStore'
 import SearchBar from '@/components/ui/SearchBar.vue'
 import FilteredFilms from '@/components/FilteredFilms.vue'
 
-const route = useRoute()
-const router = useRouter()
 const screenSizeStore = useScreenSizeStore()
 const pageContentStore = usePageContentStore()
+const initializeData = ref({})
 
 const filmSearched = ref()
+
+const screenSize = computed(() => (screenSizeStore.isMobile ? 'small' : 'large'))
 
 const searchVideo = (searchKey) => {
   filmSearched.value = searchKey
 }
 
 onBeforeMount(() => {
-  if (!route.params.data) {
-    router.push({ name: 'overview', params: { data: 'overview' } })
-    return
-  }
-
-  router.push({ name: route.params.data, params: { data: route.params.data } })
+  initializeData.value = pageContentStore.getPageContent
 })
-
-const pageContent = () => {
-  if (!route.params.data) {
-    return pageContentStore.fetchPageContent('overview')
-  }
-  return pageContentStore.fetchPageContent(route.params.data)
-}
 </script>
 
 <style scoped lang="scss">
